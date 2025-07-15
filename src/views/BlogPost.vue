@@ -28,9 +28,9 @@
     <!-- 文章内容 -->
     <div v-else-if="post">
       <!-- 文章头部 -->
-      <header class="fixed top-0 left-64 right-0 z-10 bg-cover bg-center bg-no-repeat border-b border-gray-200" 
+      <header class="fixed top-0 left-0 right-0 z-10 bg-cover bg-center bg-no-repeat border-b border-gray-200 lg:left-64" 
               style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('https://bingw.jasonzeng.dev/?resolution=1366x768&index=random&qlt=100'); height: 100px;">
-        <div class="container mx-auto px-4 lg:px-6 py-4 h-full flex items-center">
+        <div class="container mx-auto px-6 lg:px-6 py-4 h-full flex items-center">
           <div class="max-w-4xl mx-auto text-center w-full">
               
           <!-- 文章标题和元信息 -->
@@ -57,8 +57,8 @@
     </header>
     
     <!-- 主要内容区域 - 两列布局 -->
-    <main class="container mx-auto px-6 py-8 relative z-5" style="margin-top: 120px;">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    <main class="container mx-auto px-4 py-6 lg:px-6 lg:py-8 relative z-5" style="margin-top: 120px;">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
         <!-- 左侧：文章内容 -->
         <article class="lg:col-span-9 xl:col-span-9">
           <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
@@ -68,7 +68,7 @@
             </div>
             
             <!-- 文章正文 -->
-            <div class="p-8 lg:p-12">
+            <div class="p-4 lg:p-8 xl:p-12">
               <MarkdownRenderer :content="post.content" class="prose prose-lg max-w-none" />
               
 
@@ -82,35 +82,34 @@
         <aside class="hidden lg:block lg:col-span-3 xl:col-span-3 relative z-5">
           <div class="sticky" style="top: 120px;">
             <!-- 文章目录 -->
-            <div class="bg-white rounded-xl border border-gray-200 p-6">
-              <nav class="space-y-1" id="toc-nav">
+            <div class="bg-white rounded-xl border border-gray-200 p-4">
+              <h3 class="text-base font-semibold text-gray-900 mb-3">文章目录</h3>
+              <nav class="space-y-0.5" id="toc-nav">
                 <a 
                   v-for="heading in tableOfContents" 
                   :key="heading.id"
                   :href="`#${heading.id}`"
                   v-show="heading.level > 1"
-                  class="toc-link block p-2 text-sm text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-md transition-all duration-200 cursor-pointer"
+                  class="toc-link block p-1.5 text-sm text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-md transition-all duration-200 cursor-pointer"
                   :class="[
                     {
                       'text-primary-600 bg-primary-50 font-medium': activeHeading === heading.id
                     },
                     `ml-${(heading.level - 2) * 4}`
                   ]"
-                  :style="{ marginLeft: `${(heading.level - 2) * 16}px` }"
+                  :style="{ marginLeft: `${(heading.level - 2) * 12}px` }"
                   @click.prevent="scrollToHeading(heading.id)"
                 >
                   {{ heading.text }}
                 </a>
               </nav>
-              
-
             </div>
             
             <!-- 回到顶部按钮 -->
-            <div class="mt-6">
+            <div class="mt-4">
               <button 
                 @click="scrollToTop"
-                class="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200"
+                class="w-full flex items-center justify-center gap-2 px-3 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200 text-sm"
               >
                 <i class="fas fa-arrow-up"></i>
                 <span>回到顶部</span>
@@ -120,6 +119,61 @@
         </aside>
       </div>
     </main>
+    
+    <!-- 移动端浮动目录按钮 -->
+    <button 
+      v-if="tableOfContents.length > 0"
+      @click="toggleMobileToc"
+      class="fixed bottom-6 right-6 z-50 lg:hidden w-14 h-14 bg-primary-600 text-white rounded-full shadow-lg hover:bg-primary-700 transition-all duration-200 flex items-center justify-center"
+    >
+      <i class="fas fa-list text-lg"></i>
+    </button>
+    
+    <!-- 移动端目录抽屉 -->
+    <div 
+      v-if="showMobileToc"
+      @click="closeMobileToc"
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 lg:hidden"
+    >
+      <div 
+        @click.stop
+        class="fixed bottom-0 left-0 right-0 bg-white rounded-t-2xl max-h-96 overflow-hidden transform transition-transform duration-300"
+        :class="showMobileToc ? 'translate-y-0' : 'translate-y-full'"
+      >
+        <!-- 抽屉头部 -->
+        <div class="flex items-center justify-between p-4 border-b border-gray-200">
+          <h3 class="text-lg font-semibold text-gray-900">文章目录</h3>
+          <button 
+            @click="closeMobileToc"
+            class="p-2 text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-100"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <!-- 目录内容 -->
+        <div class="p-4 overflow-y-auto max-h-80">
+          <nav class="space-y-1">
+            <a 
+              v-for="heading in tableOfContents" 
+              :key="heading.id"
+              :href="`#${heading.id}`"
+              v-show="heading.level > 1"
+              class="block p-3 text-sm text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-all duration-200 cursor-pointer"
+              :class="[
+                {
+                  'text-primary-600 bg-primary-50 font-medium': activeHeading === heading.id
+                }
+              ]"
+              :style="{ paddingLeft: `${(heading.level - 1) * 16}px` }"
+              @click.prevent="scrollToHeadingAndClose(heading.id)"
+            >
+              {{ heading.text }}
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -138,6 +192,7 @@ const loading = ref(true)
 const error = ref(null)
 const isLiked = ref(false)
 const activeHeading = ref('')
+const showMobileToc = ref(false)
 
 // 动态加载的文章数据
 const post = ref(null)
@@ -211,6 +266,20 @@ const scrollToHeading = (id) => {
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+// 移动端目录抽屉控制
+const toggleMobileToc = () => {
+  showMobileToc.value = !showMobileToc.value
+}
+
+const closeMobileToc = () => {
+  showMobileToc.value = false
+}
+
+const scrollToHeadingAndClose = (id) => {
+  scrollToHeading(id)
+  closeMobileToc()
 }
 
 

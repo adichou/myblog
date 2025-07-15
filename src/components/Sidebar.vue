@@ -1,5 +1,5 @@
 <template>
-  <aside class="w-64 bg-white border-r border-gray-200 h-screen sticky top-0 overflow-y-auto">
+  <aside class="w-full h-full bg-white border-r border-gray-200 overflow-y-auto">
     <div class="p-6">
       <!-- Logo -->
       <router-link to="/" class="flex items-center gap-3 group mb-8">
@@ -50,9 +50,6 @@
                   <i class="fas fa-file-alt text-xs text-gray-400 group-hover:text-primary-500"></i>
                   <span class="truncate">{{ post.title }}</span>
                 </div>
-                <div class="text-xs text-gray-400 mt-1 ml-4">
-                  {{ formatDate(post.date) }}
-                </div>
               </router-link>
             </div>
           </div>
@@ -87,13 +84,7 @@ const getCategoryDisplayName = (category) => {
   return categoryMap[category] || category
 }
 
-const formatDate = (dateString) => {
-  const date = new Date(dateString)
-  return date.toLocaleDateString('zh-CN', {
-    month: 'short',
-    day: 'numeric'
-  })
-}
+
 
 onMounted(async () => {
   await loadPosts()

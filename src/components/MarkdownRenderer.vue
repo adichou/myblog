@@ -149,35 +149,73 @@ watch(
 }
 
 .markdown-content :deep(h2) {
-  @apply text-2xl font-semibold mb-4 mt-6 text-gray-900;
+  @apply text-xl font-semibold mb-2 mt-3 text-gray-900;
 }
 
 .markdown-content :deep(h3) {
-  @apply text-xl font-semibold mb-3 mt-5 text-gray-800;
+  @apply text-lg font-semibold mb-2 mt-3 text-gray-800;
 }
 
 .markdown-content :deep(h4) {
-  @apply text-lg font-medium mb-2 mt-4 text-gray-800;
+  @apply text-base font-medium mb-1 mt-2 text-gray-800;
 }
 
 .markdown-content :deep(p) {
-  @apply mb-4 leading-relaxed;
+  @apply mb-2 leading-normal;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  .markdown-content :deep(h2) {
+    @apply text-xl font-semibold mb-2 mt-3 text-gray-900;
+  }
+  
+  .markdown-content :deep(h3) {
+    @apply text-lg font-semibold mb-2 mt-3 text-gray-800;
+  }
+  
+  .markdown-content :deep(h4) {
+    @apply text-base font-medium mb-1 mt-2 text-gray-800;
+  }
+  
+  .markdown-content :deep(p) {
+    @apply mb-2 leading-snug text-sm;
+  }
 }
 
 .markdown-content :deep(ul) {
-  @apply mb-4 ml-6 list-disc;
+  @apply mb-3 ml-6 list-disc;
 }
 
 .markdown-content :deep(ol) {
-  @apply mb-4 ml-6 list-decimal;
+  @apply mb-3 ml-6 list-decimal;
 }
 
 .markdown-content :deep(li) {
-  @apply mb-1;
+  @apply mb-0.5 leading-normal;
 }
 
 .markdown-content :deep(blockquote) {
-  @apply border-l-4 border-blue-500 pl-4 py-2 mb-4 bg-blue-50 italic;
+  @apply border-l-4 border-blue-500 pl-4 py-2 mb-3 bg-blue-50 italic;
+}
+
+/* 移动端列表优化 */
+@media (max-width: 768px) {
+  .markdown-content :deep(ul) {
+    @apply mb-2 ml-4 list-disc;
+  }
+  
+  .markdown-content :deep(ol) {
+    @apply mb-2 ml-4 list-decimal;
+  }
+  
+  .markdown-content :deep(li) {
+    @apply mb-0 leading-snug text-sm;
+  }
+  
+  .markdown-content :deep(blockquote) {
+    @apply border-l-4 border-blue-500 pl-3 py-1.5 mb-2 bg-blue-50 italic text-sm;
+  }
 }
 
 .markdown-content :deep(code) {
@@ -185,7 +223,7 @@ watch(
 }
 
 .markdown-content :deep(pre) {
-  @apply bg-white border border-gray-200 text-gray-800 p-4 rounded-lg mb-4 overflow-x-auto shadow-sm;
+  @apply bg-white border border-gray-200 text-gray-800 p-3 rounded-lg mb-3 overflow-x-auto shadow-sm;
 }
 
 .markdown-content :deep(pre code) {
@@ -193,7 +231,26 @@ watch(
 }
 
 .markdown-content :deep(table) {
-  @apply w-full border-collapse mb-4;
+  @apply w-full border-collapse mb-3;
+}
+
+/* 移动端代码和表格优化 */
+@media (max-width: 768px) {
+  .markdown-content :deep(pre) {
+    @apply bg-white border border-gray-200 text-gray-800 p-2 rounded-lg mb-2 overflow-x-auto shadow-sm text-xs;
+  }
+  
+  .markdown-content :deep(table) {
+    @apply w-full border-collapse mb-2 text-sm;
+  }
+  
+  .markdown-content :deep(th) {
+    @apply border border-gray-300 px-2 py-1 bg-gray-100 font-semibold text-gray-900 text-xs;
+  }
+  
+  .markdown-content :deep(td) {
+    @apply border border-gray-300 px-2 py-1 text-gray-800 text-xs;
+  }
 }
 
 .markdown-content :deep(th) {
