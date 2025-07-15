@@ -1,0 +1,10 @@
+# SPA路由重定向
+/post/:slug  /post/:slug  200
+/category/:name  /category/:name  200
+/tag/:name  /tag/:name  200
+
+# API路由（开发环境）
+/api/*  /api/:splat  200
+
+# 所有其他路由重定向到index.html（SPA fallback）
+/*  /index.html  200
