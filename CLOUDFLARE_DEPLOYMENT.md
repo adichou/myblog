@@ -55,6 +55,9 @@ wrangler login
    - **Build command**: `npm run build`
    - **Build output directory**: `dist`
    - **Node.js version**: `18`
+   - **Root directory**: `/` (项目根目录)
+   
+   > **注意**: 路由配置和构建命令需要在 Cloudflare Dashboard 中设置，不能在 `wrangler.toml` 文件中配置。
 
 ### 方法二：通过 Wrangler CLI
 
@@ -141,15 +144,24 @@ Cloudflare 自动启用 Gzip 和 Brotli 压缩。
 
 ### 常见问题
 
-1. **构建失败**
+1. **配置文件验证错误**
+   ```
+   ✘ [ERROR] Configuration file for Pages projects does not support "route"
+   ✘ [ERROR] Configuration file for Pages projects does not support "build"
+   ```
+   **解决方案**: Cloudflare Pages 项目的 `wrangler.toml` 不支持 `route` 和 `build` 配置项。这些设置需要在 Cloudflare Dashboard 中配置：
+   - 移除 `wrangler.toml` 中的 `[build]` 和 `[env.*.route]` 配置
+   - 在 Dashboard 的项目设置中配置构建命令和自定义域名
+
+2. **构建失败**
    - 检查 Node.js 版本是否为 18+
    - 确保所有依赖都在 `package.json` 中
 
-2. **路由不工作**
+3. **路由不工作**
    - 确保 `_redirects` 文件在 `public` 目录中
    - 检查 SPA 重定向规则
 
-3. **文件时间戳不准确**
+4. **文件时间戳不准确**
    - 确保 Git 历史完整（`fetch-depth: 0`）
    - 检查文件元数据插件是否正确加载
 
