@@ -1,52 +1,52 @@
 <template>
   <aside class="w-full h-full bg-white border-r border-gray-200 overflow-y-auto">
-    <div class="p-6">
+    <div class="p-4">
       <!-- Logo -->
-      <router-link to="/" class="flex items-center gap-3 group mb-8">
-        <div class="w-10 h-10 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-          <i class="fas fa-code text-white text-lg"></i>
+      <router-link to="/" class="flex items-center gap-2 group mb-4">
+        <div class="w-8 h-8 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+          <i class="fas fa-code text-white text-sm"></i>
         </div>
         <div>
-          <h1 class="text-xl font-bold text-gradient">DevInsights</h1>
+          <h1 class="text-lg font-bold text-gradient">DevInsights</h1>
           <p class="text-xs text-gray-500">技术与思考</p>
         </div>
       </router-link>
       
       <!-- 文章目录 -->
-      <nav class="space-y-2">
-        <div class="mb-6">
-          <router-link to="/" class="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200">
-            <i class="fas fa-home text-primary-500"></i>
-            <span class="font-medium">首页</span>
+      <nav class="space-y-1">
+        <div class="mb-3">
+          <router-link to="/" class="flex items-center gap-2 px-2 py-1.5 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+            <i class="fas fa-home text-primary-500 text-sm"></i>
+            <span class="font-medium text-sm">首页</span>
           </router-link>
         </div>
         
         <!-- 动态目录结构 -->
-        <div v-if="loading" class="flex items-center justify-center py-4">
-          <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-primary-600"></div>
-          <span class="ml-2 text-sm text-gray-600">加载中...</span>
+        <div v-if="loading" class="flex items-center justify-center py-2">
+          <div class="animate-spin rounded-full h-3 w-3 border-b-2 border-primary-600"></div>
+          <span class="ml-2 text-xs text-gray-600">加载中...</span>
         </div>
         
-        <div v-else-if="error" class="text-red-500 text-sm p-3">
+        <div v-else-if="error" class="text-red-500 text-xs p-2">
           {{ error }}
         </div>
         
         <div v-else>
           <!-- 按分类展示文章 -->
-          <div v-for="category in categories" :key="category.name" class="mb-4">
-            <div class="flex items-center justify-between px-3 py-2 text-sm font-semibold text-gray-800 uppercase tracking-wide">
+          <div v-for="category in categories" :key="category.name" class="mb-2">
+            <div class="flex items-center justify-between px-2 py-1 text-xs font-semibold text-gray-800 uppercase tracking-wide">
               <span>{{ getCategoryDisplayName(category.name) }}</span>
-              <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">{{ category.count }}</span>
+              <span class="text-xs text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded-full">{{ category.count }}</span>
             </div>
             
-            <div class="ml-4 space-y-1">
+            <div class="ml-2 space-y-0.5">
               <router-link 
                 v-for="post in getPostsByCategory(category.name)" 
                 :key="post.slug"
                 :to="`/post/${post.slug}`"
-                class="block px-3 py-2 text-sm text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors duration-200 group"
+                class="block px-2 py-1 text-xs text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors duration-200 group"
               >
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-1.5">
                   <i class="fas fa-file-alt text-xs text-gray-400 group-hover:text-primary-500"></i>
                   <span class="truncate">{{ post.title }}</span>
                 </div>

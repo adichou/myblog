@@ -149,72 +149,115 @@ watch(
 }
 
 .markdown-content :deep(h2) {
-  @apply text-xl font-semibold mb-2 mt-3 text-gray-900;
+  @apply text-lg font-semibold mb-1.5 mt-2 text-gray-900;
 }
 
 .markdown-content :deep(h3) {
-  @apply text-lg font-semibold mb-2 mt-3 text-gray-800;
+  @apply text-base font-semibold mb-1 mt-2 text-gray-800;
 }
 
 .markdown-content :deep(h4) {
-  @apply text-base font-medium mb-1 mt-2 text-gray-800;
+  @apply text-sm font-medium mb-0.5 mt-1.5 text-gray-800;
 }
 
 .markdown-content :deep(p) {
-  @apply mb-2 leading-normal;
+  @apply mb-1.5 leading-relaxed text-sm;
 }
 
 /* 移动端优化 */
 @media (max-width: 768px) {
   .markdown-content :deep(h2) {
-    @apply text-xl font-semibold mb-2 mt-3 text-gray-900;
+    @apply text-base font-semibold mb-1 mt-1.5 text-gray-900;
   }
   
   .markdown-content :deep(h3) {
-    @apply text-lg font-semibold mb-2 mt-3 text-gray-800;
+    @apply text-sm font-semibold mb-1 mt-1.5 text-gray-800;
   }
   
   .markdown-content :deep(h4) {
-    @apply text-base font-medium mb-1 mt-2 text-gray-800;
+    @apply text-xs font-medium mb-0.5 mt-1 text-gray-800;
   }
   
   .markdown-content :deep(p) {
-    @apply mb-2 leading-snug text-sm;
+    @apply mb-1 leading-normal text-xs;
   }
 }
 
 .markdown-content :deep(ul) {
-  @apply mb-3 ml-6 list-disc;
+  @apply mb-2 ml-4 list-disc;
 }
 
 .markdown-content :deep(ol) {
-  @apply mb-3 ml-6 list-decimal;
+  @apply mb-2 ml-4 list-decimal;
 }
 
 .markdown-content :deep(li) {
-  @apply mb-0.5 leading-normal;
+  @apply mb-0.5 leading-relaxed text-sm;
 }
 
 .markdown-content :deep(blockquote) {
-  @apply border-l-4 border-blue-500 pl-4 py-2 mb-3 bg-blue-50 italic;
+  @apply border-l-4 border-blue-500 pl-3 py-1.5 mb-2 bg-blue-50 italic text-sm;
 }
 
-/* 移动端列表优化 */
+/* 移动端列表和引用优化 */
 @media (max-width: 768px) {
   .markdown-content :deep(ul) {
-    @apply mb-2 ml-4 list-disc;
+    @apply mb-1.5 ml-3 list-disc;
   }
-  
+
   .markdown-content :deep(ol) {
-    @apply mb-2 ml-4 list-decimal;
+    @apply mb-1.5 ml-3 list-decimal;
   }
-  
+
   .markdown-content :deep(li) {
-    @apply mb-0 leading-snug text-sm;
+    @apply mb-0.5 leading-normal text-xs;
   }
-  
+
   .markdown-content :deep(blockquote) {
-    @apply border-l-4 border-blue-500 pl-3 py-1.5 mb-2 bg-blue-50 italic text-sm;
+    @apply border-l-2 border-blue-500 pl-2 py-1 mb-1.5 bg-blue-50 italic text-xs;
+  }
+}
+
+.markdown-content :deep(pre) {
+  @apply bg-gray-900 text-gray-100 p-3 rounded-lg overflow-x-auto my-3 text-sm;
+}
+
+.markdown-content :deep(code) {
+  @apply bg-gray-100 text-red-600 px-1.5 py-0.5 rounded text-xs font-mono;
+}
+
+.markdown-content :deep(table) {
+  @apply w-full border-collapse border border-gray-300 my-3 text-sm;
+}
+
+.markdown-content :deep(th) {
+  @apply border border-gray-300 px-2 py-1 bg-gray-100 font-semibold text-xs;
+}
+
+.markdown-content :deep(td) {
+  @apply border border-gray-300 px-2 py-1 text-xs;
+}
+
+/* 移动端代码和表格优化 */
+@media (max-width: 768px) {
+  .markdown-content :deep(pre) {
+    @apply bg-gray-900 text-gray-100 p-2 rounded-lg overflow-x-auto my-2 text-xs;
+  }
+
+  .markdown-content :deep(code) {
+    @apply bg-gray-100 text-red-600 px-1 py-0.5 rounded text-xs font-mono;
+  }
+
+  .markdown-content :deep(table) {
+    @apply w-full border-collapse border border-gray-300 my-2 text-xs;
+  }
+
+  .markdown-content :deep(th) {
+    @apply border border-gray-300 px-1.5 py-0.5 bg-gray-100 font-semibold text-xs;
+  }
+
+  .markdown-content :deep(td) {
+    @apply border border-gray-300 px-1.5 py-0.5 text-xs;
   }
 }
 

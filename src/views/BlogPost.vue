@@ -29,24 +29,24 @@
     <div v-else-if="post">
       <!-- 文章头部 -->
       <header class="fixed top-0 left-0 right-0 z-10 bg-cover bg-center bg-no-repeat border-b border-gray-200 lg:left-64" 
-              style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('https://bingw.jasonzeng.dev/?resolution=1366x768&index=random&qlt=100'); height: 100px;">
-        <div class="container mx-auto px-6 lg:px-6 py-4 h-full flex items-center">
+              style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('https://bingw.jasonzeng.dev/?resolution=1366x768&index=random&qlt=100'); height: 80px;">
+        <div class="container mx-auto px-4 lg:px-4 py-2 h-full flex items-center">
           <div class="max-w-4xl mx-auto text-center w-full">
               
           <!-- 文章标题和元信息 -->
-          <div class="mb-2">
-            <h1 class="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 leading-tight drop-shadow-lg">
+          <div class="mb-1">
+            <h1 class="text-lg md:text-xl lg:text-2xl font-bold text-white mb-1 leading-tight drop-shadow-lg">
               {{ post.title }}
             </h1>
           </div>
           
           <!-- 文章元信息 -->
-          <div class="flex flex-wrap items-center justify-center gap-4 text-sm text-white/80">
-            <div class="flex items-center gap-2">
+          <div class="flex flex-wrap items-center justify-center gap-3 text-xs text-white/80">
+            <div class="flex items-center gap-1">
                 <i class="fas fa-calendar"></i>
                 <span>创建：{{ formatDate(post.createdAt) }}</span>
               </div>
-              <div class="flex items-center gap-2">
+              <div class="flex items-center gap-1">
                 <i class="fas fa-edit"></i>
                 <span>最近更新：{{ formatDate(post.updatedAt) }}</span>
               </div>
@@ -57,8 +57,8 @@
     </header>
     
     <!-- 主要内容区域 - 两列布局 -->
-    <main class="container mx-auto px-4 py-6 lg:px-6 lg:py-8 relative z-5" style="margin-top: 120px;">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+    <main class="container mx-auto px-3 py-4 lg:px-4 lg:py-6 relative z-5" style="margin-top: 90px;">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6">
         <!-- 左侧：文章内容 -->
         <article class="lg:col-span-9 xl:col-span-9">
           <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
@@ -68,7 +68,7 @@
             </div>
             
             <!-- 文章正文 -->
-            <div class="p-4 lg:p-8 xl:p-12">
+            <div class="p-3 lg:p-6 xl:p-8">
               <MarkdownRenderer :content="post.content" class="prose prose-lg max-w-none" />
               
 
@@ -80,24 +80,24 @@
         
         <!-- 右侧：文章目录 -->
         <aside class="hidden lg:block lg:col-span-3 xl:col-span-3 relative z-5">
-          <div class="sticky" style="top: 120px;">
+          <div class="sticky" style="top: 100px;">
             <!-- 文章目录 -->
-            <div class="bg-white rounded-xl border border-gray-200 p-4">
-              <h3 class="text-base font-semibold text-gray-900 mb-3">文章目录</h3>
+            <div class="bg-white rounded-xl border border-gray-200 p-3">
+              <h3 class="text-sm font-semibold text-gray-900 mb-2">文章目录</h3>
               <nav class="space-y-0.5" id="toc-nav">
                 <a 
                   v-for="heading in tableOfContents" 
                   :key="heading.id"
                   :href="`#${heading.id}`"
                   v-show="heading.level > 1"
-                  class="toc-link block p-1.5 text-sm text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-md transition-all duration-200 cursor-pointer"
+                  class="toc-link block p-1 text-xs text-gray-600 hover:text-primary-600 hover:bg-primary-50 rounded-md transition-all duration-200 cursor-pointer"
                   :class="[
                     {
                       'text-primary-600 bg-primary-50 font-medium': activeHeading === heading.id
                     },
                     `ml-${(heading.level - 2) * 4}`
                   ]"
-                  :style="{ marginLeft: `${(heading.level - 2) * 12}px` }"
+                  :style="{ marginLeft: `${(heading.level - 2) * 10}px` }"
                   @click.prevent="scrollToHeading(heading.id)"
                 >
                   {{ heading.text }}
@@ -106,10 +106,10 @@
             </div>
             
             <!-- 回到顶部按钮 -->
-            <div class="mt-4">
+            <div class="mt-3">
               <button 
                 @click="scrollToTop"
-                class="w-full flex items-center justify-center gap-2 px-3 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200 text-sm"
+                class="w-full flex items-center justify-center gap-2 px-2 py-1.5 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors duration-200 text-xs"
               >
                 <i class="fas fa-arrow-up"></i>
                 <span>回到顶部</span>
@@ -124,9 +124,9 @@
     <button 
       v-if="tableOfContents.length > 0"
       @click="toggleMobileToc"
-      class="fixed bottom-6 right-6 z-50 lg:hidden w-14 h-14 bg-primary-600 text-white rounded-full shadow-lg hover:bg-primary-700 transition-all duration-200 flex items-center justify-center"
+      class="fixed bottom-4 right-4 z-50 lg:hidden w-12 h-12 bg-primary-600 text-white rounded-full shadow-lg hover:bg-primary-700 transition-all duration-200 flex items-center justify-center"
     >
-      <i class="fas fa-list text-lg"></i>
+      <i class="fas fa-list text-base"></i>
     </button>
     
     <!-- 移动端目录抽屉 -->
