@@ -693,7 +693,7 @@ window.addEventListener('unhandledrejection', (event) => {
 这个博客系统架构具有以下特点：
 
 1. **现代化技术栈** - Vue 3 + Vite + Tailwind CSS
-2. **优秀的开发体验** - 热重载、TypeScript 支持、组件化开发
+2. **优秀的开发体验** - 热重载、 TypeScript 支持、组件化开发
 3. **强大的内容处理** - Markdown 渲染、代码高亮、图表支持
 4. **高性能** - 代码分割、懒加载、缓存策略
 5. **易于部署** - Cloudflare Pages 一键部署

@@ -11,7 +11,7 @@
             </div>
           </div>
           
-          <h1 class="text-2xl md:text-3xl font-bold mb-2 text-gray-900">
+          <h1 class="text-2xl md:text-3xl mb-2 text-gray-900 font-bold">
             欢迎来到我的技术博客
           </h1>
           
@@ -35,7 +35,7 @@
     <section id="featured" class="py-6 bg-white">
       <div class="container mx-auto px-4">
         <div class="text-center mb-8">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">精选文章</h2>
+          <h2 class="text-2xl md:text-3xl text-gray-900 mb-2 font-bold">精选文章</h2>
           <p class="text-lg text-gray-600 max-w-2xl mx-auto">最新的技术分享和思考总结</p>
         </div>
         
@@ -80,7 +80,7 @@
                 <span>{{ post.readingTime || post.readTime }} 分钟阅读</span>
               </div>
               
-              <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-200">
+              <h3 class="text-lg text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-200 font-semibold">
                 {{ post.title }}
               </h3>
               
@@ -130,7 +130,7 @@
                 <span>{{ post.readingTime || post.readTime }} 分钟阅读</span>
               </div>
               
-              <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-200">
+              <h3 class="text-lg text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-200 font-semibold">
                 {{ post.title }}
               </h3>
               
@@ -168,7 +168,7 @@
     <section id="projects" class="py-6 bg-gray-50">
       <div class="container mx-auto px-4">
         <div class="text-center mb-8">
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">项目展示</h2>
+          <h2 class="text-2xl md:text-3xl text-gray-900 mb-2 font-bold">项目展示</h2>
           <p class="text-lg text-gray-600 max-w-2xl mx-auto">一些有趣的个人项目和开源贡献</p>
         </div>
         
@@ -189,7 +189,7 @@
                 </div>
               </div>
               
-              <h3 class="text-lg font-semibold text-gray-900 mb-2">{{ project.title }}</h3>
+              <h3 class="text-lg text-gray-900 mb-2 font-semibold">{{ project.title }}</h3>
               <p class="text-sm text-gray-600 mb-4">{{ project.description }}</p>
               
               <div class="flex flex-wrap gap-1.5">
@@ -210,7 +210,7 @@
         <div class="max-w-4xl mx-auto">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">关于我</h2>
+              <h2 class="text-3xl md:text-4xl text-gray-900 mb-6 font-bold">关于我</h2>
               <div class="prose prose-lg text-gray-600">
                 <p class="mb-4">
                   我是一名热爱技术的前端开发工程师，专注于创造优雅的用户体验和高质量的代码。

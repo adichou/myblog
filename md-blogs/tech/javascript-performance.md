@@ -185,7 +185,7 @@ class VirtualList {
 
 ### 使用 Web Workers
 
-将计算密集型任务移到 Web Worker：
+将计算密集型任务移到 Web Worker ：
 
 ```javascript
 // main.js

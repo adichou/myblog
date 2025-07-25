@@ -9,7 +9,10 @@
     "build": "vite build",
     "build:cf": "npm run build",
     "preview": "vite preview",
-    "deploy": "wrangler pages publish dist"
+    "deploy": "wrangler pages publish dist",
+    "format:spacing": "node scripts/format-spacing.js",
+    "watch:format": "node scripts/watch-format.js",
+    "format:all": "npm run format:spacing"
   },
   "dependencies": {
     "@vueuse/core": "^10.4.1",
@@ -25,6 +28,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "@vitejs/plugin-vue": "^4.3.4",
     "autoprefixer": "^10.4.15",
+    "chokidar": "^3.5.3",
     "postcss": "^8.4.29",
     "tailwindcss": "^3.3.3",
     "vite": "^4.4.9"

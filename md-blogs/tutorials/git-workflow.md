@@ -535,9 +535,9 @@ git reflog  # 查看操作历史
 
 选择合适的 Git 工作流程需要考虑：
 
-1. **团队规模** - 小团队可选择 GitHub Flow，大团队适合 Git Flow
-2. **发布频率** - 持续部署选择 GitHub Flow，定期发布选择 Git Flow
-3. **项目复杂度** - 简单项目用 GitHub Flow，复杂项目用 Git Flow
+1. **团队规模** - 小团队可选择 GitHub Flow ，大团队适合 Git Flow
+2. **发布频率** - 持续部署选择 GitHub Flow ，定期发布选择 Git Flow
+3. **项目复杂度** - 简单项目用 GitHub Flow ，复杂项目用 Git Flow
 4. **团队经验** - 新手团队从简单流程开始
 
 无论选择哪种工作流程，关键是：

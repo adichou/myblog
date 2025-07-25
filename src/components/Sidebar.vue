@@ -7,7 +7,7 @@
           <i class="fas fa-code text-white text-sm"></i>
         </div>
         <div>
-          <h1 class="text-lg font-bold text-gradient">DevInsights</h1>
+          <h1 class="text-lg text-gradient font-bold">DevInsights</h1>
           <p class="text-xs text-gray-500">技术与思考</p>
         </div>
       </router-link>
@@ -34,7 +34,7 @@
         <div v-else>
           <!-- 按分类展示文章 -->
           <div v-for="category in categories" :key="category.name" class="mb-2">
-            <div class="flex items-center justify-between px-2 py-1 text-xs font-semibold text-gray-800 uppercase tracking-wide">
+            <div class="flex items-center justify-between px-2 py-1 text-xs text-gray-800 uppercase tracking-wide font-semibold">
               <span>{{ getCategoryDisplayName(category.name) }}</span>
               <span class="text-xs text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded-full">{{ category.count }}</span>
             </div>

@@ -9,7 +9,7 @@
               <i class="fas fa-code text-white text-sm"></i>
             </div>
             <div>
-              <h3 class="text-lg font-bold text-gradient">DevInsights</h3>
+              <h3 class="text-lg text-gradient font-bold">DevInsights</h3>
               <p class="text-xs text-gray-400">技术与思考</p>
             </div>
           </div>
@@ -35,7 +35,7 @@
         
         <!-- 快速链接 -->
         <div>
-          <h4 class="font-semibold mb-2 text-white text-sm">快速导航</h4>
+          <h4 class="mb-2 text-white text-sm font-semibold">快速导航</h4>
           <ul class="space-y-1">
             <li><a href="#" class="text-gray-300 hover:text-primary-400 transition-colors duration-200 text-sm">首页</a></li>
             <li><a href="#" class="text-gray-300 hover:text-primary-400 transition-colors duration-200 text-sm">技术文章</a></li>
@@ -47,7 +47,7 @@
         
         <!-- 分类标签 -->
         <div>
-          <h4 class="font-semibold mb-2 text-white text-sm">热门标签</h4>
+          <h4 class="mb-2 text-white text-sm font-semibold">热门标签</h4>
           <div class="flex flex-wrap gap-1">
             <span class="px-2 py-0.5 bg-gray-800 text-gray-300 text-xs rounded-full hover:bg-primary-600 hover:text-white transition-colors duration-200 cursor-pointer">
               Vue.js

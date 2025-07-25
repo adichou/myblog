@@ -149,159 +149,147 @@ watch(
 }
 
 .markdown-content :deep(h2) {
-  @apply text-lg font-semibold mb-1.5 mt-2 text-gray-900;
+  @apply text-lg mb-1.5 mt-2 text-gray-900 font-semibold;
 }
 
 .markdown-content :deep(h3) {
-  @apply text-base font-semibold mb-1 mt-2 text-gray-800;
+  @apply text-base mb-1 mt-2 text-gray-800 font-semibold;
 }
 
 .markdown-content :deep(h4) {
-  @apply text-sm font-medium mb-0.5 mt-1.5 text-gray-800;
+  @apply text-sm font-medium mb-0.5 mt-1.5 text-gray-800 font-medium;
 }
 
 .markdown-content :deep(p) {
-  @apply mb-1.5 leading-relaxed text-sm;
+  @apply mb-4 leading-relaxed text-base;
+}
+
+/* 正文中的加粗文本样式 - 使用红色下划虚线 */
+.markdown-content :deep(strong) {
+  @apply underline decoration-red-500 decoration-dashed decoration-2 underline-offset-4 font-normal;
+}
+
+.markdown-content :deep(b) {
+  @apply underline decoration-red-500 decoration-dashed decoration-2 underline-offset-4 font-normal;
 }
 
 /* 移动端优化 */
 @media (max-width: 768px) {
   .markdown-content :deep(h2) {
-    @apply text-base font-semibold mb-1 mt-1.5 text-gray-900;
+    @apply text-base mb-1 mt-1.5 text-gray-900 font-semibold;
   }
   
   .markdown-content :deep(h3) {
-    @apply text-sm font-semibold mb-1 mt-1.5 text-gray-800;
+    @apply text-sm mb-1 mt-1.5 text-gray-800 font-semibold;
   }
   
   .markdown-content :deep(h4) {
-    @apply text-xs font-medium mb-0.5 mt-1 text-gray-800;
+    @apply text-xs font-medium mb-0.5 mt-1 text-gray-800 font-medium;
   }
   
   .markdown-content :deep(p) {
-    @apply mb-1 leading-normal text-xs;
+    @apply mb-3 leading-normal text-sm;
+  }
+
+  .markdown-content :deep(strong) {
+    @apply underline decoration-red-500 decoration-dashed decoration-1 underline-offset-2 font-normal;
+  }
+
+  .markdown-content :deep(b) {
+    @apply underline decoration-red-500 decoration-dashed decoration-1 underline-offset-2 font-normal;
   }
 }
 
 .markdown-content :deep(ul) {
-  @apply mb-2 ml-4 list-disc;
+  @apply mb-4 ml-4 list-disc;
 }
 
 .markdown-content :deep(ol) {
-  @apply mb-2 ml-4 list-decimal;
+  @apply mb-4 ml-4 list-decimal;
 }
 
 .markdown-content :deep(li) {
-  @apply mb-0.5 leading-relaxed text-sm;
+  @apply mb-2 leading-relaxed text-base;
 }
 
 .markdown-content :deep(blockquote) {
-  @apply border-l-4 border-blue-500 pl-3 py-1.5 mb-2 bg-blue-50 italic text-sm;
+  @apply border-l-4 border-blue-500 pl-4 py-3 mb-4 bg-blue-50 italic text-base;
 }
 
 /* 移动端列表和引用优化 */
 @media (max-width: 768px) {
   .markdown-content :deep(ul) {
-    @apply mb-1.5 ml-3 list-disc;
+    @apply mb-3 ml-3 list-disc;
   }
 
   .markdown-content :deep(ol) {
-    @apply mb-1.5 ml-3 list-decimal;
+    @apply mb-3 ml-3 list-decimal;
   }
 
   .markdown-content :deep(li) {
-    @apply mb-0.5 leading-normal text-xs;
+    @apply mb-1.5 leading-normal text-sm;
   }
 
   .markdown-content :deep(blockquote) {
-    @apply border-l-2 border-blue-500 pl-2 py-1 mb-1.5 bg-blue-50 italic text-xs;
+    @apply border-l-2 border-blue-500 pl-3 py-2 mb-3 bg-blue-50 italic text-sm;
   }
 }
 
+/* 代码样式 */
 .markdown-content :deep(pre) {
-  @apply bg-gray-900 text-gray-100 p-3 rounded-lg overflow-x-auto my-3 text-sm;
+  @apply bg-white border border-gray-200 text-gray-800 p-3 rounded-lg mb-3 overflow-x-auto shadow-sm;
 }
 
 .markdown-content :deep(code) {
   @apply bg-gray-100 text-red-600 px-1.5 py-0.5 rounded text-xs font-mono;
 }
 
-.markdown-content :deep(table) {
-  @apply w-full border-collapse border border-gray-300 my-3 text-sm;
-}
-
-.markdown-content :deep(th) {
-  @apply border border-gray-300 px-2 py-1 bg-gray-100 font-semibold text-xs;
-}
-
-.markdown-content :deep(td) {
-  @apply border border-gray-300 px-2 py-1 text-xs;
-}
-
-/* 移动端代码和表格优化 */
-@media (max-width: 768px) {
-  .markdown-content :deep(pre) {
-    @apply bg-gray-900 text-gray-100 p-2 rounded-lg overflow-x-auto my-2 text-xs;
-  }
-
-  .markdown-content :deep(code) {
-    @apply bg-gray-100 text-red-600 px-1 py-0.5 rounded text-xs font-mono;
-  }
-
-  .markdown-content :deep(table) {
-    @apply w-full border-collapse border border-gray-300 my-2 text-xs;
-  }
-
-  .markdown-content :deep(th) {
-    @apply border border-gray-300 px-1.5 py-0.5 bg-gray-100 font-semibold text-xs;
-  }
-
-  .markdown-content :deep(td) {
-    @apply border border-gray-300 px-1.5 py-0.5 text-xs;
-  }
-}
-
-.markdown-content :deep(code) {
-  @apply bg-gray-100 px-1 py-0.5 rounded text-sm font-mono text-gray-800;
-}
-
-.markdown-content :deep(pre) {
-  @apply bg-white border border-gray-200 text-gray-800 p-3 rounded-lg mb-3 overflow-x-auto shadow-sm;
-}
-
 .markdown-content :deep(pre code) {
   @apply bg-transparent p-0 text-gray-800;
 }
 
+/* 表格样式优化 */
 .markdown-content :deep(table) {
-  @apply w-full border-collapse mb-3;
+  @apply w-full border-collapse my-6 bg-white shadow-sm rounded-lg overflow-hidden;
+  border: 1px solid #e5e7eb;
 }
 
-/* 移动端代码和表格优化 */
+.markdown-content :deep(th) {
+  @apply px-6 py-3 bg-gray-50 text-left text-sm font-semibold text-gray-900 border-b border-gray-200;
+}
+
+.markdown-content :deep(td) {
+  @apply px-6 py-4 text-sm text-gray-700 border-b border-gray-100;
+}
+
+.markdown-content :deep(tbody tr:hover) {
+  @apply bg-gray-50;
+}
+
+.markdown-content :deep(tbody tr:last-child td) {
+  @apply border-b-0;
+}
+
+/* 移动端表格优化 */
+@media (max-width: 768px) {
+  .markdown-content :deep(table) {
+    @apply my-4 text-xs;
+  }
+  
+  .markdown-content :deep(th) {
+    @apply px-3 py-2 text-xs font-semibold;
+  }
+  
+  .markdown-content :deep(td) {
+    @apply px-3 py-2 text-xs;
+  }
+}
+
+/* 移动端代码优化 */
 @media (max-width: 768px) {
   .markdown-content :deep(pre) {
     @apply bg-white border border-gray-200 text-gray-800 p-2 rounded-lg mb-2 overflow-x-auto shadow-sm text-xs;
   }
-  
-  .markdown-content :deep(table) {
-    @apply w-full border-collapse mb-2 text-sm;
-  }
-  
-  .markdown-content :deep(th) {
-    @apply border border-gray-300 px-2 py-1 bg-gray-100 font-semibold text-gray-900 text-xs;
-  }
-  
-  .markdown-content :deep(td) {
-    @apply border border-gray-300 px-2 py-1 text-gray-800 text-xs;
-  }
-}
-
-.markdown-content :deep(th) {
-  @apply border border-gray-300 px-4 py-2 bg-gray-100 font-semibold text-gray-900;
-}
-
-.markdown-content :deep(td) {
-  @apply border border-gray-300 px-4 py-2 text-gray-800;
 }
 
 .markdown-content :deep(a) {
