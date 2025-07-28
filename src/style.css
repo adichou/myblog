@@ -86,11 +86,21 @@
   }
   
   .prose-custom h2 {
-    @apply text-2xl font-semibold text-gray-900 mt-8 mb-4;
+    @apply text-2xl font-semibold text-gray-900 mt-8 mb-4 relative pl-2.5;
+  }
+  
+  .prose-custom h2::before {
+    content: '';
+    @apply absolute left-0 top-1 w-1 h-6 bg-red-500 rounded-sm;
   }
   
   .prose-custom h3 {
-    @apply text-xl font-semibold text-gray-900 mt-6 mb-3;
+    @apply text-xl font-semibold text-gray-900 mt-6 mb-3 relative pl-2.5;
+  }
+  
+  .prose-custom h3::before {
+    content: '';
+    @apply absolute left-0 top-1 w-1 h-5 bg-red-500 rounded-sm;
   }
   
   .prose-custom p {
